@@ -1,0 +1,29 @@
+{
+  "name": "wikistack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e html,js,css app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mime": "^2.2.0",
+    "morgan": "^1.9.0",
+    "nunjucks": "^3.0.1",
+    "pg": "^6.4.2",
+    "sequelize": "^4.32.1",
+    "swig": "^1.4.2",
+    "volleyball": "^1.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}
