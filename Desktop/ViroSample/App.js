@@ -32,11 +32,9 @@ var sharedProps = {
 // Sets the default scene you want for AR and VR
 
 var InitialARScene = require('./js/MainScene');
-var InitialVRScene = require('./js/HelloWorldScene');
-// var InitialARScene = require('./js/ARPortals/MainScene');
+
 
 var UNSET = "UNSET";
-var VR_NAVIGATOR_TYPE = "VR";
 var AR_NAVIGATOR_TYPE = "AR";
 
 // This determines which type of experience to launch in, or UNSET, if the user should
@@ -53,7 +51,6 @@ export default class ViroSample extends Component {
     }
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
-    this._getVRNavigator = this._getVRNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
   }
@@ -63,9 +60,8 @@ export default class ViroSample extends Component {
   render() {
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
-    } else if (this.state.navigatorType == VR_NAVIGATOR_TYPE) {
-      return this._getVRNavigator();
-    } else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
+    }
+     else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
     }
   }
@@ -87,12 +83,6 @@ export default class ViroSample extends Component {
             <Text style={localStyles.buttonText}>AR</Text>
           </TouchableHighlight>
 
-          <TouchableHighlight style={localStyles.buttons}
-            onPress={this._getExperienceButtonOnPress(VR_NAVIGATOR_TYPE)}
-            underlayColor={'#68a0ff'} >
-
-            <Text style={localStyles.buttonText}>VR</Text>
-          </TouchableHighlight>
         </View>
       </View>
     );
@@ -107,12 +97,12 @@ export default class ViroSample extends Component {
   }
 
   // Returns the ViroSceneNavigator which will start the VR experience
-  _getVRNavigator() {
-    return (
-      <ViroSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: InitialVRScene}} onExitViro={this._exitViro}/>
-    );
-  }
+  // _getVRNavigator() {
+  //   return (
+  //     <ViroSceneNavigator {...this.state.sharedProps}
+  //       initialScene={{scene: InitialVRScene}} onExitViro={this._exitViro}/>
+  //   );
+  // }
 
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
