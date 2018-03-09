@@ -16,13 +16,15 @@ import {
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
-  Picker
 } from 'react-native';
 
 import {
   ViroSceneNavigator,
   ViroARSceneNavigator
 } from 'react-viro';
+
+import { connect } from 'react-redux';
+import { filterByPlace } from './store/apartments';
 
 /*
  TODO: Insert your API key below
@@ -44,13 +46,14 @@ var AR_NAVIGATOR_TYPE = "AR";
 var defaultNavigatorType = UNSET;
 
 export default class ViroSample extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       navigatorType : defaultNavigatorType,
       sharedProps : sharedProps
     }
+
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
@@ -72,11 +75,9 @@ export default class ViroSample extends Component {
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
     let data = [{
-      value: 'Williamsburg',
+      value: 'bk',
     }, {
-      value: 'Mango',
-    }, {
-      value: 'Pear',
+      value: 'man',
     }];
 
     return (
@@ -95,6 +96,13 @@ export default class ViroSample extends Component {
                 containerStyle={localStyles.searchWidth}
                 label = "NeighborHood"
                 data = {data}
+                onChangeText = {this.props.onChangeText && this.props.onDropChange(data.value)}
+                 />
+             <Dropdown
+                containerStyle={localStyles.searchWidth}
+                label = "console bitch"
+                data = {data}
+                onChangeText = { ()=> console.warn(this.props.sharedProps)}
                  />
           </View>
 
@@ -135,6 +143,18 @@ export default class ViroSample extends Component {
     })
   }
 }
+
+const mapState = function(state){
+  return {
+    apartments: state.apartments
+  }
+}
+
+const mapDispatch = (dispatch) => ({
+  onDropChange: (value) => {
+    dispatch(filterByPlace(value))
+  }
+})
 
 var localStyles = StyleSheet.create({
   searchWidth :{
@@ -208,4 +228,6 @@ var localStyles = StyleSheet.create({
   }
 });
 
-module.exports = ViroSample
+module.exports = ViroSample;
+
+// export default connect(mapState, mapDispatch)(ViroSample);
