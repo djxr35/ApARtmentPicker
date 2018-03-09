@@ -118,14 +118,6 @@ export default class ViroSample extends Component {
     );
   }
 
-  // Returns the ViroSceneNavigator which will start the VR experience
-  // _getVRNavigator() {
-  //   return (
-  //     <ViroSceneNavigator {...this.state.sharedProps}
-  //       initialScene={{scene: InitialVRScene}} onExitViro={this._exitViro}/>
-  //   );
-  // }
-
   // This function returns an anonymous/lambda function to be used
   // by the experience selector buttons
   _getExperienceButtonOnPress(navigatorType) {
