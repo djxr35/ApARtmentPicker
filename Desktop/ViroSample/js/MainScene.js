@@ -34,6 +34,18 @@ var MainScene = createReactClass({
           </ViroPortal>
           <Viro360Image source={require("./portal_res/360_island.jpg")} />
         </ViroPortalScene>
+
+        <ViroPortalScene passable={true} dragType="FixedDistance" onDrag={()=>{}}>
+          <ViroPortal position={[-.8, 0, -1]} scale={[.1, .1, .1]} rotation={[0, 45, 0]}>
+            <Viro3DObject source={require('./portal_res/portal_ship/portal_ship.vrx')}
+              resources={[require('./portal_res/portal_ship/portal_ship_diffuse.png'),
+                          require('./portal_res/portal_ship/portal_ship_normal.png'),
+                          require('./portal_res/portal_ship/portal_ship_specular.png')]}
+              type="VRX"/>
+          </ViroPortal>
+          <Viro360Video source={require("./portal_res/trippy_vid.mp4")} loop={true} />
+        </ViroPortalScene>
+
       </ViroARScene>
     );
   },
