@@ -19,6 +19,7 @@ import {
 
 
 var createReactClass = require('create-react-class');
+
 var MainScene = createReactClass({
 
   render: function() {
