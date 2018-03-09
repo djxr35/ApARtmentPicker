@@ -9,6 +9,7 @@ import {
   ViroText,
 } from 'react-viro';
 
+
 export default class HelloWorldSceneAR extends Component {
 
   constructor() {
