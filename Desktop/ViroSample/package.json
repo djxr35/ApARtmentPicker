@@ -11,6 +11,7 @@
     "ngrok": "^3.0.0",
     "react": "16.0.0-beta.5",
     "react-native": "0.49.3",
+    "react-native-material-dropdown": "^0.11.0",
     "react-viro": "2.4.0"
   },
   "devDependencies": {

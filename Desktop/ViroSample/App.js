@@ -8,6 +8,7 @@
  */
 
 import React, { Component } from 'react';
+import {Dropdown} from 'react-native-material-dropdown'
 import {
   AppRegistry,
   Text,
@@ -15,6 +16,7 @@ import {
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
+  Picker
 } from 'react-native';
 
 import {
@@ -58,6 +60,7 @@ export default class ViroSample extends Component {
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
   // if you are building a specific type of experience.
   render() {
+
     if (this.state.navigatorType == UNSET) {
       return this._getExperienceSelector();
     }
@@ -68,23 +71,42 @@ export default class ViroSample extends Component {
 
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
-    return (
-      <View style={localStyles.outer} >
-        <View style={localStyles.inner} >
+    let data = [{
+      value: 'Williamsburg',
+    }, {
+      value: 'Mango',
+    }, {
+      value: 'Pear',
+    }];
 
-          <Text style={localStyles.titleText}>
-            Choose your desired experience:
-          </Text>
+    return (
+
+      <View style={localStyles.outer} //this is main outer div
+      >
+
+        <Text style= {localStyles.welcome} >
+        Welcome to App-AR-tmint Picr </Text>
+
+          <View >
+             <Text style={localStyles.titleText}>
+                Choose your desired NeighborHood:
+              </Text>
+            <Dropdown
+                containerStyle={localStyles.searchWidth}
+                label = "NeighborHood"
+                data = {data}
+                 />
+          </View>
+
 
           <TouchableHighlight style={localStyles.buttons}
             onPress={this._getExperienceButtonOnPress(AR_NAVIGATOR_TYPE)}
             underlayColor={'#68a0ff'} >
 
-            <Text style={localStyles.buttonText}>AR</Text>
+            <Text style={localStyles.buttonText}>Click Me</Text>
           </TouchableHighlight>
 
         </View>
-      </View>
     );
   }
 
@@ -123,26 +145,43 @@ export default class ViroSample extends Component {
 }
 
 var localStyles = StyleSheet.create({
-  viroContainer :{
-    flex : 1,
-    backgroundColor: "black",
+  searchWidth :{
+    width: 200,
   },
+  welcome: {
+    color: 'black',
+    fontSize : 25
+  },
+  container: {
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    paddingTop: 30,
+    paddingBottom: 20,
+    width: 175,
+
+  },
+  drop:{
+    paddingTop: 30,
+    paddingBottom: 20,
+  }
+  ,
   outer : {
-    flex : 1,
-    flexDirection: 'row',
-    alignItems:'center',
-    backgroundColor: "black",
-  },
-  inner: {
     flex : 1,
     flexDirection: 'column',
     alignItems:'center',
-    backgroundColor: "black",
+    backgroundColor: "white",
+    justifyContent: "space-around"
+  },
+  inner: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: "white",
   },
   titleText: {
     paddingTop: 30,
     paddingBottom: 20,
-    color:'#fff',
+    color:'black',
     textAlign:'center',
     fontSize : 25
   },
