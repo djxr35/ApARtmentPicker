@@ -49,15 +49,16 @@ var MainScene = createReactClass({
         <ViroPortalScene>
             <ViroPortal position={[1, 0, -1]} scale={[.5, .5, .5]}>
               <Viro3DObject
-                  source={require("../Wolfy")}
-                  // resources={[require('../portal_res/Wolf__done_obj.mtl')
+                  source={require('./portal_res/Male.OBJ')}
+                  // resources={[require('./portal_res/Wolf.c4d')
                   //   ]}
-                  highAccuracyGaze={true}
+                  // highAccuracyGaze={true}
                   position={[1, 3, -5]}
-                  scale={[2, 2, 2]}
+                  // scale={[2, 2, 2]}
                   rotation={[45, 0, 0]}
                   type="OBJ"
-                  transformBehaviors={["billboard"]}/>
+                  // transformBehaviors={["billboard"]}
+                  />
                           </ViroPortal>
         </ViroPortalScene>
 
