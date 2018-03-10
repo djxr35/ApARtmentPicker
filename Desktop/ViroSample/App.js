@@ -86,7 +86,7 @@ export default class ViroSample extends Component {
     }];
 
 
-    let filteredArr;
+    let filteredArr
 
 
     return (
