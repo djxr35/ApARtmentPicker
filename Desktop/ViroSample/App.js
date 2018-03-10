@@ -25,12 +25,13 @@ import {
 
 import { connect } from 'react-redux';
 import { filterByPlace } from './store/apartments';
+import { apartments } from './testDB.js';
 
-/*
- TODO: Insert your API key below
- */
+//  TODO: Insert your API key below
+
 var sharedProps = {
   apiKey:"07FEF4B6-C9AB-4D9A-855A-FEAC338CF193",
+  test: 'test'
 }
 
 // Sets the default scene you want for AR and VR
@@ -49,15 +50,18 @@ export default class ViroSample extends Component {
   constructor(props) {
     super(props);
 
+
     this.state = {
-      navigatorType : defaultNavigatorType,
-      sharedProps : sharedProps
+      navigatorType: defaultNavigatorType,
+      sharedProps: sharedProps,
+      filteredArr: apartments
     }
 
     this._getExperienceSelector = this._getExperienceSelector.bind(this);
     this._getARNavigator = this._getARNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
     this._exitViro = this._exitViro.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
@@ -70,6 +74,7 @@ export default class ViroSample extends Component {
      else if (this.state.navigatorType == AR_NAVIGATOR_TYPE) {
       return this._getARNavigator();
     }
+
   }
 
   // Presents the user with a choice of an AR or VR experience
@@ -79,6 +84,10 @@ export default class ViroSample extends Component {
     }, {
       value: 'man',
     }];
+
+
+    let filteredArr;
+
 
     return (
 
@@ -96,13 +105,13 @@ export default class ViroSample extends Component {
                 containerStyle={localStyles.searchWidth}
                 label = "NeighborHood"
                 data = {data}
-                onChangeText = {this.props.onChangeText && this.props.onDropChange(data.value)}
+                onChangeText = {(value) => this.handleChange(value)}
                  />
              <Dropdown
                 containerStyle={localStyles.searchWidth}
                 label = "console bitch"
                 data = {data}
-                onChangeText = { ()=> console.warn(this.props.sharedProps)}
+                onChangeText = { ()=> console.warn(this.state.filteredArr.length)}
                  />
           </View>
 
@@ -118,11 +127,24 @@ export default class ViroSample extends Component {
     );
   }
 
+
+  handleChange(searchVal) {
+   this.setState({
+      filteredArr: apartments.filter((apt)=>{
+        if (apt.place === searchVal){
+          return apt;
+        }
+      })
+  })
+  }
+
   // Returns the ViroARSceneNavigator which will start the AR experience
   _getARNavigator() {
     return (
       <ViroARSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: InitialARScene}} />
+        initialScene={{scene: InitialARScene}}
+        viroAppProps = {this.state.filteredArr}
+        />
     );
   }
 

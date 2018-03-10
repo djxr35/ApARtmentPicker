@@ -20,9 +20,14 @@ import {
 
 var createReactClass = require('create-react-class');
 
-var MainScene = createReactClass({
 
-  render: function() {
+export default class MainScene extends Component {
+    constructor(props) {
+      super(props);
+    }
+
+  render(){
+    console.warn('TEST: ', this.props['arSceneNavigator']['viroAppProps'])
     var key = 0;
 
     var posArr = [{position: [0, -0.5, -2] ,//front
@@ -40,17 +45,18 @@ var MainScene = createReactClass({
                     {position:[-2.5, -0.5, 0],//left
                       rotation:[0,90,0],
                       image:require('./portal_res/penn.jpg'),
-                    poskey: 4}]
+                    poskey: 4}
+                  ]
 
     return (
       <ViroARScene>
       <ViroAmbientLight color="#ffffff" intensity={200}/>
-         {
-           apartments.bk.map((apartment) => {
+
+         {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
              let posObj = posArr[key]
              key++
-
-          return (
+          if(key <= 4){
+            return (
               <ViroPortalScene key= {posObj.poskey} passable={true} dragType="FixedDistance" onDrag={()=>{}}>
                   <ViroPortal position={posObj.position} scale={[.2, .35, .1]} rotation= {posObj.rotation}>
                     <Viro3DObject source={require('./portal_res/portal_ship/portal_ship.vrx')}
@@ -61,13 +67,17 @@ var MainScene = createReactClass({
                       type="VRX"/>
                   </ViroPortal>
                   <Viro360Image source={apartment.img} />
-          </ViroPortalScene>)})
+          </ViroPortalScene>)}
+         }
+          )
+
       }
 
 
       </ViroARScene>
     );
-  },
-});
+  }
+  }
+
 
 module.exports = MainScene;
