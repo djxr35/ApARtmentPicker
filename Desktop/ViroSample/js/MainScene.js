@@ -15,7 +15,8 @@ import {
   ViroPortal,
   ViroPortalScene,
   Viro3DObject,
-  ViroText
+  ViroText,
+  ViroImage
 } from 'react-viro';
 
 
@@ -63,8 +64,8 @@ export default class MainScene extends Component {
           />
 
       <ViroImage
-          height={2}
-          width={2}
+          height={.75}
+          width={.75}
           source={require('./portal_res/speech_bubble3.png')}
           position={[.5, 0.25, -1]}
           rotation={[0,-30,0]}
