@@ -80,9 +80,9 @@ export default class ViroSample extends Component {
   // Presents the user with a choice of an AR or VR experience
   _getExperienceSelector() {
     let data = [{
-      value: 'bk',
+      value: 'Brooklyn',
     }, {
-      value: 'man',
+      value: 'Manhattan',
     }];
 
 

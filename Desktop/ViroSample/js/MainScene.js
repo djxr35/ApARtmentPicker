@@ -52,9 +52,9 @@ export default class MainScene extends Component {
 
     return (
       <ViroARScene>
-      <ViroAmbientLight color="#ffffff" intensity={200}/>
+       <ViroAmbientLight color="#ffffff" intensity={200}/>
 
-      <Viro3DObject
+       <Viro3DObject
             source={require('./emoji_smile/emoji_smile.vrx')}
             position={[.8, -0.1, -1]}
             rotation={[0,-39,0]}
@@ -67,9 +67,10 @@ export default class MainScene extends Component {
           height={.75}
           width={.75}
           source={require('./portal_res/speech_bubble3.png')}
-          position={[.5, 0.25, -1]}
+          position={[.5, .28, -1]}
           rotation={[0,-30,0]}
         />
+
          {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
              let posObj = posArr[key]
              key++
@@ -84,7 +85,7 @@ export default class MainScene extends Component {
                       // rotation= {portal.rotation}
                       type="VRX"/>
                   </ViroPortal>
-                  <Viro360Image source={require('./portal_res/apt.jpg')} />
+                  <Viro360Image source={apartment.img} />
           </ViroPortalScene>)}
          }
           )
@@ -93,6 +94,7 @@ export default class MainScene extends Component {
 
 
       </ViroARScene>
+
     );
   }
   }
