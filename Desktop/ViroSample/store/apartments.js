@@ -8,7 +8,6 @@ const initialState = {
 export const FILTER_PLACE = 'FILTER_PLACE';
 
 export function filterByPlace(place){
-  console.warn('PLACE', place)
   const action = {type: 'FILTER_PLACE', place};
   return action;
 }

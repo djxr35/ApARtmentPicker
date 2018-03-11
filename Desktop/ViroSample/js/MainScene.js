@@ -29,8 +29,7 @@ export default class MainScene extends Component {
     }
 
   render(){
-    console.warn('TEST: ', this.props['arSceneNavigator']['viroAppProps'])
-    var key = 0;
+     var key = 0;
 
     var posArr = [{position: [0, -0.5, -2] ,//front
                       rotation:[0,0,0],

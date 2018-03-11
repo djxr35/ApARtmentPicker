@@ -95,11 +95,11 @@ export default class ViroSample extends Component {
       >
 
         <Text style= {localStyles.welcome} >
-        Welcome to App-AR-tmint Picr </Text>
+        ApARtment Picker </Text>
 
-          <View >
+          <View style={localStyles.inner}>
              <Text style={localStyles.titleText}>
-                Choose your desired NeighborHood:
+                Choose your desired Neighborhood:
               </Text>
             <Dropdown
                 containerStyle={localStyles.searchWidth}
@@ -174,12 +174,12 @@ export default class ViroSample extends Component {
 // })
 
 var localStyles = StyleSheet.create({
-  searchWidth :{
+  searchWidth: {
     width: 200,
   },
   welcome: {
     color: 'black',
-    fontSize : 25
+    fontSize : 30
   },
   container: {
     borderRadius: 10,
