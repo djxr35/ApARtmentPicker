@@ -56,8 +56,8 @@ export default class MainScene extends Component {
 
       <Viro3DObject
             source={require('./emoji_smile/emoji_smile.vrx')}
-            position={[.5, -0.3, -1]}
-            rotation={[0,-30,0]}
+            position={[.8, -0.1, -1]}
+            rotation={[0,-39,0]}
             scale={[.2, .2, .2]}
             type="VRX"
             dragType="FixedDistance" onDrag={()=>{}}
@@ -70,34 +70,25 @@ export default class MainScene extends Component {
           position={[.5, 0.25, -1]}
           rotation={[0,-30,0]}
         />
-
-        {/* <ViroText text="Walk through a portal to view 3D apartment"
-                position={[.5, 0.25, -1]}
-                rotation={[0,-30,0]}
-                height={1} width={4}
-                style = {styles.textStyle} /> */}
-         {/* {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
+         {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
              let posObj = posArr[key]
              key++
           if(key <= 4){
             return (
               <ViroPortalScene key= {posObj.poskey} passable={true} dragType="FixedDistance" onDrag={()=>{}}>
-                <ViroText text={apartment.address}
-                position={[posObj.position[0], posObj.position[1]+1, posObj.position[2]]}
-                rotation={posObj.rotation} scale={[.1, .1, .1]} height={1} width={4} style = {styles.textStyle} />
-                  <ViroPortal position={posObj.position} scale={[.2, .35, .1]} rotation= {posObj.rotation}>
-                    <Viro3DObject source={require('./portal_res/portal_ship/portal_ship.vrx')}
-                      resources={[require('./portal_res/portal_ship/portal_ship_diffuse.png'),
-                                  require('./portal_res/portal_ship/portal_ship_normal.png'),
-                                  require('./portal_res/portal_ship/portal_ship_specular.png')]}
+                  <ViroPortal position={posObj.position} scale={[.8, 1, .1]} rotation= {posObj.rotation}>
+                    <Viro3DObject source={require('./portal_res/portal_ship/portal_wood_frame.vrx')}
+                      resources={[require('./portal_res/portal_ship/portal_wood_frame_diffuse.png'),
+                                  require('./portal_res/portal_ship/portal_wood_frame_normal.png'),
+                                  require('./portal_res/portal_ship/portal_wood_frame_specular.png')]}
                       // rotation= {portal.rotation}
                       type="VRX"/>
                   </ViroPortal>
-                  <Viro360Image source={apartment.img} />
+                  <Viro360Image source={require('./portal_res/apt.jpg')} />
           </ViroPortalScene>)}
          }
           )
-      } */}
+      }
 
 
 
