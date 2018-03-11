@@ -54,15 +54,28 @@ export default class MainScene extends Component {
       <ViroAmbientLight color="#ffffff" intensity={200}/>
 
       <Viro3DObject
-            source={require('./res/emoji_smile/emoji_smile.vrx')}
-            position={[0, 0, -1]}
+            source={require('./emoji_smile/emoji_smile.vrx')}
+            position={[.5, -0.3, -1]}
+            rotation={[0,-30,0]}
             scale={[.2, .2, .2]}
             type="VRX"
             dragType="FixedDistance" onDrag={()=>{}}
           />
 
+      <ViroImage
+          height={2}
+          width={2}
+          source={require('./portal_res/speech_bubble3.png')}
+          position={[.5, 0.25, -1]}
+          rotation={[0,-30,0]}
+        />
 
-         {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
+        {/* <ViroText text="Walk through a portal to view 3D apartment"
+                position={[.5, 0.25, -1]}
+                rotation={[0,-30,0]}
+                height={1} width={4}
+                style = {styles.textStyle} /> */}
+         {/* {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
              let posObj = posArr[key]
              key++
           if(key <= 4){
@@ -83,7 +96,7 @@ export default class MainScene extends Component {
           </ViroPortalScene>)}
          }
           )
-      }
+      } */}
 
 
 
