@@ -15,6 +15,8 @@ import {
   ViroPortal,
   ViroPortalScene,
   Viro3DObject,
+  ViroText,
+  ViroImage
 } from 'react-viro';
 
 
@@ -36,7 +38,7 @@ export default class MainScene extends Component {
                     poskey: 1},
                     {position: [2.5, -0.5, 0],//right
                       rotation:[0,270,0],
-                      image:require('./portal_res/penn.jpg'),
+                    image:require('./portal_res/penn.jpg'),
                       poskey: 2},
                     {position:[0, -0.5, 2],//back
                       rotation:[0,180,0],
@@ -52,12 +54,37 @@ export default class MainScene extends Component {
       <ViroARScene>
       <ViroAmbientLight color="#ffffff" intensity={200}/>
 
-         {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
+      <Viro3DObject
+            source={require('./emoji_smile/emoji_smile.vrx')}
+            position={[.5, -0.3, -1]}
+            rotation={[0,-30,0]}
+            scale={[.2, .2, .2]}
+            type="VRX"
+            dragType="FixedDistance" onDrag={()=>{}}
+          />
+
+      <ViroImage
+          height={.75}
+          width={.75}
+          source={require('./portal_res/speech_bubble3.png')}
+          position={[.5, 0.25, -1]}
+          rotation={[0,-30,0]}
+        />
+
+        {/* <ViroText text="Walk through a portal to view 3D apartment"
+                position={[.5, 0.25, -1]}
+                rotation={[0,-30,0]}
+                height={1} width={4}
+                style = {styles.textStyle} /> */}
+         {/* {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
              let posObj = posArr[key]
              key++
           if(key <= 4){
             return (
               <ViroPortalScene key= {posObj.poskey} passable={true} dragType="FixedDistance" onDrag={()=>{}}>
+                <ViroText text={apartment.address}
+                position={[posObj.position[0], posObj.position[1]+1, posObj.position[2]]}
+                rotation={posObj.rotation} scale={[.1, .1, .1]} height={1} width={4} style = {styles.textStyle} />
                   <ViroPortal position={posObj.position} scale={[.2, .35, .1]} rotation= {posObj.rotation}>
                     <Viro3DObject source={require('./portal_res/portal_ship/portal_ship.vrx')}
                       resources={[require('./portal_res/portal_ship/portal_ship_diffuse.png'),
@@ -70,14 +97,24 @@ export default class MainScene extends Component {
           </ViroPortalScene>)}
          }
           )
+      } */}
 
-      }
 
 
       </ViroARScene>
     );
   }
   }
+
+  var styles = StyleSheet.create({
+    textStyle: {
+      fontFamily: 'Arial',
+      fontSize: 100,
+      color: '#ffffff',
+      textAlignVertical: 'center',
+      textAlign: 'center',
+    },
+  });
 
 
 module.exports = MainScene;
