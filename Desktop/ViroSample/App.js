@@ -23,7 +23,7 @@ import {
   ViroARSceneNavigator
 } from 'react-viro';
 
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 import { filterByPlace } from './store/apartments';
 import { apartments } from './testDB.js';
 
@@ -107,12 +107,7 @@ export default class ViroSample extends Component {
                 data = {data}
                 onChangeText = {(value) => this.handleChange(value)}
                  />
-             <Dropdown
-                containerStyle={localStyles.searchWidth}
-                label = "console bitch"
-                data = {data}
-                onChangeText = { ()=> console.warn(this.state.filteredArr.length)}
-                 />
+
           </View>
 
 
@@ -166,17 +161,17 @@ export default class ViroSample extends Component {
   }
 }
 
-const mapState = function(state){
-  return {
-    apartments: state.apartments
-  }
-}
+// const mapState = function(state){
+//   return {
+//     apartments: state.apartments
+//   }
+// }
 
-const mapDispatch = (dispatch) => ({
-  onDropChange: (value) => {
-    dispatch(filterByPlace(value))
-  }
-})
+// const mapDispatch = (dispatch) => ({
+//   onDropChange: (value) => {
+//     dispatch(filterByPlace(value))
+//   }
+// })
 
 var localStyles = StyleSheet.create({
   searchWidth :{

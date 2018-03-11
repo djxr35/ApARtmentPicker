@@ -71,27 +71,30 @@ export default class MainScene extends Component {
           rotation={[0,-30,0]}
         />
 
-    {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
-                let posObj = posArr[key]
-                key++
-              if(key <= 4){
-                return (
-                  <ViroPortalScene key= {posObj.poskey} passable={true} dragType="FixedDistance" onDrag={()=>{}}>
-                      <ViroPortal position={posObj.position} scale={[.2, .35, .1]} rotation= {posObj.rotation}>
-                        <Viro3DObject source={require('./portal_res/portal_ship/portal_ship.vrx')}
-                          resources={[require('./portal_res/portal_ship/portal_ship_diffuse.png'),
-                                      require('./portal_res/portal_ship/portal_ship_normal.png'),
-                                      require('./portal_res/portal_ship/portal_ship_specular.png')]}
-                          type="VRX"/>
-                      </ViroPortal>
-                      <Viro360Image source={apartment.img} />
-              </ViroPortalScene>)}
-            }
-              )
-          }
+         {this.props['arSceneNavigator']['viroAppProps'].map((apartment) => {
+             let posObj = posArr[key]
+             key++
+          if(key <= 4){
+            return (
+              <ViroPortalScene key= {posObj.poskey} passable={true} dragType="FixedDistance" onDrag={()=>{}}>
+                  <ViroPortal position={posObj.position} scale={[.8, 1, .1]} rotation= {posObj.rotation}>
+                    <Viro3DObject source={require('./portal_res/portal_ship/portal_wood_frame.vrx')}
+                      resources={[require('./portal_res/portal_ship/portal_wood_frame_diffuse.png'),
+                                  require('./portal_res/portal_ship/portal_wood_frame_normal.png'),
+                                  require('./portal_res/portal_ship/portal_wood_frame_specular.png')]}
+                      // rotation= {portal.rotation}
+                      type="VRX"/>
+                  </ViroPortal>
+                  <Viro360Image source={apartment.img} />
+          </ViroPortalScene>)}
+         }
+          )
+      }
 
 
-       </ViroARScene>
+
+      </ViroARScene>
+
     );
   }
   }
