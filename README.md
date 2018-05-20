@@ -1,4 +1,4 @@
-# :globe_with_meridians: ApARtment Picker
+# :door: ApARtment Picker
 
 ApARtment Picker is a React Native mobile app for viewing apartments in Augmented Reality. The app was built using ViroReact, a platform for building AR/VR apps in React Native. Users can walk through 3D AR Portals to view 360 degree images of apartments that matched their search criteria.
 
